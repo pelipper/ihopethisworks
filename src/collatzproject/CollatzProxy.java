@@ -1,13 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package collatzproject;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * CollatzProxy class, implements Collatz
+ * The proxy allows for the use of predicates to filter the data from RealCollatz
+ * @author Stuart Pelletier
+ */
 public class CollatzProxy implements Collatz {
     public RealCollatz realCollatz;
     private int lowerBound;
@@ -19,15 +19,30 @@ public class CollatzProxy implements Collatz {
         
         
     
-    //constructor for quick calculation of results only
-    public CollatzProxy(int lowerBound, int upperBound) {
+/**
+ * Constructor for CollatzProxy
+ * @param lowerBound is the lower bound of integers to calculate, must be > 0
+ * @param upperBound is the upper bound of integers to calculate, must be >= lowerBound
+ */
+    public CollatzProxy(int lowerBound, int upperBound) throws IllegalArgumentException{
+        if(lowerBound < 1){
+            throw new IllegalArgumentException("Lower Bound must be greater than 0");
+        }
+        if(upperBound < lowerBound){
+            throw new IllegalArgumentException("Upper Bound must be greater than Lower Bound");
+        }
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
         realCollatz = new RealCollatz(lowerBound, upperBound);
         
     }
 
-    
+    /**
+     * Helper method that checks if toCheck is a power of the power parameter
+     * @param toCheck
+     * @param power
+     * @return 
+     */
     private boolean isPowerOf(int toCheck, int power){
         int temp = toCheck;
         while(temp > (power - 1) && temp%power == 0){
@@ -38,7 +53,11 @@ public class CollatzProxy implements Collatz {
         }
         return false;
     }
-    
+    /**
+     * helper method that checks if n is prime
+     * @param n
+     * @return 
+     */
     private boolean isPrime(int n){
         if(n==2){
             return true;
@@ -53,12 +72,36 @@ public class CollatzProxy implements Collatz {
         }
         return true;
     }
+    /**
+     * get function for CollatzNumbers
+     * @param lowerBound lower bound of collatz numbers, must be greater than lowerBound field
+     * @param upperBound upper bound of collatz numbers, must be less than upperBound field
+     * @return 
+     */
     @Override
-    public CollatzNumbers getCollatzNumbers(int lowerBound, int upperBound){
+    public CollatzNumbers getCollatzNumbers(int lowerBound, int upperBound)throws IllegalArgumentException{
+        if(lowerBound < this.lowerBound) {
+            throw new IllegalArgumentException("Lower bound must not be less than initial lower bound");
+        }
+        if(upperBound > this.upperBound) {
+            throw new IllegalArgumentException("Upper bound must not be greater than initial upper bound");
+        }
         return realCollatz.getCollatzNumbers(lowerBound, upperBound);
     }
+    /**
+     * get function for CollatzCalculations
+     * @param lowerBound lower bound of calculations, must be greater than lowerBound field
+     * @param upperBound upper bound of calculations, must be less than upperBound field
+     * @return 
+     */
     @Override
     public List<CollatzCalculation> getCalculations(int lowerBound, int upperBound){
+        if(lowerBound < this.lowerBound) {
+            throw new IllegalArgumentException("Lower bound must not be less than initial lower bound");
+        }
+        if(upperBound > this.upperBound) {
+            throw new IllegalArgumentException("Upper bound must not be greater than initial upper bound");
+        }
         return realCollatz.getCalculations(lowerBound, upperBound);
     }
 

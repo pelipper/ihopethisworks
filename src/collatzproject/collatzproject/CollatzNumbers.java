@@ -8,7 +8,7 @@ import java.util.List;
  * This prevents indexing issues after predicates or bounds have been set
  * @author Stuart Pelletier
  */
-public class CollatzNumbers {
+class CollatzNumbers {
     List<Integer> initialInts;
     List<Integer> collatzNums;
     /**
@@ -16,7 +16,7 @@ public class CollatzNumbers {
      * @param initialInts is a list of initial integers
      * @param collatzNums is a list of number of iterations to get to 1 of the same-indexed initialInt
      */
-    public CollatzNumbers(List<Integer> initialInts, List<Integer> collatzNums){
+    CollatzNumbers(List<Integer> initialInts, List<Integer> collatzNums){
         this.initialInts = initialInts;
         this.collatzNums = collatzNums;
     }
@@ -24,14 +24,14 @@ public class CollatzNumbers {
      * 
      * @return collatzNums
      */
-    public List<Integer> getCollatzNums(){
+    List<Integer> getCollatzNums(){
         return collatzNums;
     }
     /**
      * 
      * @return initialInt
      */
-    public List<Integer> getInitialInts(){
+    List<Integer> getInitialInts(){
         return initialInts;
     }
 }

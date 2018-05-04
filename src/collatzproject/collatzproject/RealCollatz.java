@@ -22,7 +22,7 @@ public class RealCollatz implements Collatz{
         collatzListInitialization();
     }
 
-    private void collatzListInitialization(){
+    void collatzListInitialization(){
         for(int i = lowerBound; i <= upperBound; i++){
            CollatzCalculation calc = new CollatzCalculation(i);
            collatzNums.add(calc);

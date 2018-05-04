@@ -5,67 +5,41 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CollatzProxyTest {
 
-    @Test
-    void getCollatzNumbers() {
-        int lower = 1;
-        int upper = 10;
-        CollatzProxy collatzProxy = new CollatzProxy(lower, upper);
-        System.out.println(collatzProxy.getCollatzNumbers(lower, upper).toString());
-    }
 
     @Test
     void getCalculations() {
+        CollatzProxy collatzProxy = new CollatzProxy(1, 10);
+        System.out.println(collatzProxy.getCalculations(1, 10));
     }
 
     @Test
-    void getCollatzNumbers1() {
+    void getCollatzNumbersNonPrimeMult() {
+        ArrayList<Integer> testCollatz = new ArrayList<>(Arrays.asList(1, 2, 8, 3, 6));
+        CollatzProxy collatzProxy = new CollatzProxy(1, 10);
+
+        assertEquals(collatzProxy.getCollatzNumbers(1, 10, "Multiple", 2).getCollatzNums(), testCollatz);
     }
 
     @Test
-    void getCollatzNumbers2() {
+    void getCollatzNumbersNonPrimePower() {
+        ArrayList<Integer> testCollatz = new ArrayList<>(Arrays.asList(0, 1, 2, 3));
+        CollatzProxy collatzProxy = new CollatzProxy(1, 10);
+
+        assertEquals(collatzProxy.getCollatzNumbers(1, 10, "Power", 2).getCollatzNums(), testCollatz);
+
+
     }
 
     @Test
-    void getCalculations1() {
+    void getCollatzNumbersPrime() {
+        ArrayList<Integer> testCollatz = new ArrayList<>(Arrays.asList(0, 1, 5, 16));
+        CollatzProxy collatzProxy = new CollatzProxy(1, 10);
+
+        assertEquals(collatzProxy.getCollatzNumbers(1, 10, "Prime").getCollatzNums(), testCollatz);
     }
 
-    @Test
-    void getCalculations2() {
-    }
-
-    @Test
-    void getLowerBound() {
-    }
-
-    @Test
-    void setLowerBound() {
-    }
-
-    @Test
-    void getUpperBound() {
-    }
-
-    @Test
-    void setUpperBound() {
-    }
-
-    @Test
-    void getPredicateType() {
-    }
-
-    @Test
-    void setPredicateType() {
-    }
-
-    @Test
-    void getPredicateNumber() {
-    }
-
-    @Test
-    void setPredicateNumber() {
-    }
 }

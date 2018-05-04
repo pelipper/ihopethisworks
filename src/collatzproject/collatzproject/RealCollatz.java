@@ -15,7 +15,7 @@ public class RealCollatz implements Collatz{
 
     List<CollatzCalculation> collatzNums = new ArrayList<>();
 
-    public RealCollatz(int lowerBound, int upperBound) {
+    RealCollatz(int lowerBound, int upperBound) {
 
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
@@ -30,19 +30,19 @@ public class RealCollatz implements Collatz{
     }
 
 
-    public int getLowerBound() {
+    int getLowerBound() {
         return lowerBound;
     }
 
-    public void setLowerBound(int lowerBound) {
+    void setLowerBound(int lowerBound) {
         this.lowerBound = lowerBound;
     }
 
-    public int getUpperBound() {
+    int getUpperBound() {
         return upperBound;
     }
 
-    public void setUpperBound(int upperBound) {
+    void setUpperBound(int upperBound) {
         this.upperBound = upperBound;
     }
 

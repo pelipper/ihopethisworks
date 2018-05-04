@@ -2,12 +2,19 @@ package collatzproject;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CollatzProxyTest {
 
     @Test
     void getCollatzNumbers() {
+        int lower = 1;
+        int upper = 10;
+        CollatzProxy collatzProxy = new CollatzProxy(lower, upper);
+        System.out.println(collatzProxy.getCollatzNumbers(lower, upper).toString());
     }
 
     @Test

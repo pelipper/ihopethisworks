@@ -8,8 +8,8 @@ import java.util.List;
  * The proxy allows for the use of predicates to filter the data from RealCollatz
  * @author Stuart Pelletier
  */
-public class CollatzProxy implements Collatz {
-    public RealCollatz realCollatz;
+public class CollatzProxy implements src.collatzproject.Collatz {
+    public collatzproject.RealCollatz realCollatz;
     private int lowerBound;
     private int upperBound;
     public String predicateType;
@@ -33,7 +33,7 @@ public class CollatzProxy implements Collatz {
         }
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
-        realCollatz = new RealCollatz(lowerBound, upperBound);
+        realCollatz = new collatzproject.RealCollatz(lowerBound, upperBound);
         
     }
 

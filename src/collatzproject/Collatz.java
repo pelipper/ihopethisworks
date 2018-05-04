@@ -1,5 +1,5 @@
 
-package collatzproject;
+package src.collatzproject;
 
 
 import java.util.List;
@@ -9,6 +9,6 @@ import java.util.List;
  * @author Stuart Pelletier
  */
 public interface Collatz {
-    CollatzNumbers getCollatzNumbers(int lowerBound, int upperBound);
-    List<CollatzCalculation> getCalculations(int lowerBound, int upperBound);
+    collatzproject.CollatzNumbers getCollatzNumbers(int lowerBound, int upperBound);
+    List<collatzproject.CollatzCalculation> getCalculations(int lowerBound, int upperBound);
 }

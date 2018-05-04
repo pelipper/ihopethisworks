@@ -18,7 +18,7 @@ public class CollatzCalculation {
      * @param initialInt is the starting integer
      * @throws IllegalArgumentException when initialInt is not a natural number
      */
-    public CollatzCalculation(int initialInt) throws IllegalArgumentException{
+    CollatzCalculation(int initialInt) throws IllegalArgumentException{
         if(initialInt <= 0){
             throw new IllegalArgumentException("Input integer must be greater than 0");
         }
@@ -29,7 +29,7 @@ public class CollatzCalculation {
     /**
      * Helper method that initializes all of the values
      */
-    private void initializer(){
+   private void initializer(){
         int temp = initialInt;
             while(temp != 1){
                 calculationSteps.add(temp);
@@ -39,29 +39,30 @@ public class CollatzCalculation {
                 } else {
                     temp = (3*temp) + 1;
                 }
+
             }
     }
 
     /**
-     * 
+     *
      * @return initialInt
      */
-    public int getInitialInt(){
+    int getInitialInt(){
         return initialInt;
     }
     /**
-     * 
+     *
      * @return calculationSteps
      */
     public List<Integer> calculationSteps(){
         return calculationSteps;
     }
     /**
-     * 
+     *
      * @return numIterations
      */
-    public int getNumIterations(){
+    int getNumIterations(){
         return numIterations;
     }
-    
+
 }

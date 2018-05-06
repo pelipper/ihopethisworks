@@ -133,6 +133,9 @@ public class CollatzProxy implements Collatz {
         if(upperBound > this.upperBound) {
             throw new IllegalArgumentException("Upper bound must not be greater than initial upper bound");
         }
+        if(predicateNumber < 1){
+            throw new IllegalArgumentException("Predicate Number must be greater than 0");
+        }
         CollatzNumbers unfilteredList = realCollatz.getCollatzNumbers(lowerBound, upperBound);
         List<Integer> filteredList = new ArrayList<>();
         List<Integer> initialIntList = new ArrayList<>();
@@ -213,7 +216,9 @@ public class CollatzProxy implements Collatz {
         if(upperBound > this.upperBound) {
             throw new IllegalArgumentException("Upper bound must not be greater than initial upper bound");
         }
-        
+        if(predicateNumber < 1){
+            throw new IllegalArgumentException("Predicate Number must be greater than 0");
+        }
         
         List<CollatzCalculation> unfilteredList = realCollatz.getCalculations(lowerBound, upperBound);
         List<CollatzCalculation> filteredList = new ArrayList<>();
@@ -261,36 +266,78 @@ public class CollatzProxy implements Collatz {
         }
         return filteredList;
     }
-
+/**
+ * 
+ * @return int lowerBound
+ */
     public int getLowerBound() {
         return lowerBound;
     }
-
-    public void setLowerBound(int lowerBound) {
+/**
+ * 
+ * @param lowerBound, int to set lowerBound to
+ */
+    public void setLowerBound(int lowerBound) throws IllegalArgumentException {
+        if(lowerBound < this.lowerBound){
+            throw new IllegalArgumentException("lowerBound must not be less than current lowerBound");
+        }
         this.lowerBound = lowerBound;
     }
-
+/**
+ * 
+ * @return int upperBound
+ */
     public int getUpperBound() {
         return upperBound;
     }
-
-    public void setUpperBound(int upperBound) {
+/**
+ * 
+ * @param upperBound, int to set upperBound to
+ */
+    public void setUpperBound(int upperBound) throws IllegalArgumentException{
+        if(upperBound > this.upperBound){
+            throw new IllegalArgumentException("upperBound must not be greater than current upperBound");
+        }
         this.upperBound = upperBound;
     }
-
+/**
+ * 
+ * @return String predicateType
+ */
     public String getPredicateType() {
         return predicateType;
     }
-
-    public void setPredicateType(String predicateType) {
+/**
+ * 
+ * @param predicateType, String to set predicateType to. Needs to be "Prime", "Multiple", or "Power"
+ */
+    public void setPredicateType(String predicateType) throws IllegalArgumentException{
+        boolean illegalPred = true;
+        for(int i = 0; i < predicateTypes.length; i++){
+            if(predicateType.equals(predicateTypes[i])){
+                illegalPred = false;
+            }
+        }
+        if(illegalPred){
+            throw new IllegalArgumentException("Predicate type must be Multiple, Power, or Prime");
+        }
         this.predicateType = predicateType;
     }
-
+/**
+ * 
+ * @return int predicateNumber
+ */
     public int getPredicateNumber() {
         return predicateNumber;
     }
-
-    public void setPredicateNumber(int predicateNumber) {
+/**
+ * 
+ * @param predicateNumber, int to set predicateNumber to 
+ */
+    public void setPredicateNumber(int predicateNumber) throws IllegalArgumentException{
+        if(predicateNumber < 1){
+            throw new IllegalArgumentException("Predicate Number must be greater than 0");
+        }
         this.predicateNumber = predicateNumber;
     }
 

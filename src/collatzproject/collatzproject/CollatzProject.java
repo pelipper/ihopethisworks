@@ -1,32 +1,57 @@
 package collatzproject;
 
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CollatzProject {
     //
     public static void main(String[] args) throws IOException {
+        //initializations
         int lower = 1;
         int upper = 10;
         CsvUtils csvUtils = new CsvUtils();
-        String csvOutFile = "src/csvOut";
-//        FileWriter csvWriter = new FileWriter(csvOutFile);
+        FileWriter csvWriterNoPredicate = new FileWriter(new File("src/csvOut/noPredicate.csv"));
+        FileWriter csvWriterPrimes = new FileWriter(new File("src/csvOut/primes.csv"));
+        FileWriter csvWriterPower = new FileWriter(new File("src/csvOut/power.csv"));
+        FileWriter csvWriterMult = new FileWriter(new File("src/csvOut/mult.csv"));
         RealCollatz realCollatz = new RealCollatz(lower, upper);
         CollatzProxy collatzProxy = new CollatzProxy(lower, upper);
-//        csvUtils.writeLine(csvWriter, Arrays.asList("Initial Numbers", "Collatz Number", "Calculation"));
+
+        csvUtils.writeLine(csvWriterNoPredicate, Arrays.asList("Initial Numbers", "Collatz Number", "Calculations"));
+        List<String> values = new ArrayList<>();
+        List<String> calculationSteps = new ArrayList<>();
 
 
-        System.out.println("initial list of numbers" + "\n" + collatzProxy.getCollatzNumbers(lower, upper).getInitialInts()+"\n");
 
-            System.out.println("Collatz numbers for initial list" + "\n" + realCollatz.getCollatzNumbers(lower, upper).getCollatzNums()+"\n");
 
-        System.out.println("Calculation Steps");
-        for (CollatzCalculation c : collatzProxy.getCalculations(lower, upper)){
-            System.out.print(c.calculationSteps() + ",");
+        for (CollatzCalculation c : collatzProxy.getCalculations(lower, upper)) {
+            calculationSteps.add(c.calculationSteps().toString() );
+
+        }
+
+
+        values.add(collatzProxy.getCollatzNumbers(lower, upper).getInitialInts().toString());
+        values.add(realCollatz.getCollatzNumbers(lower, upper).getCollatzNums().toString());
+
+
+        for (String s : calculationSteps) {
+            values.add(s);
 
         }
 
+        csvUtils.writeLine(csvWriterNoPredicate, values,'|', '\u0000');
 
-        }
+        csvWriterNoPredicate.flush();
+        csvWriterNoPredicate.close();
+
+
+
+
     }
+}
 

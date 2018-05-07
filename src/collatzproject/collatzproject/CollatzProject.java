@@ -9,23 +9,29 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CollatzProject {
-    //
+
     public static void main(String[] args) throws IOException {
         //initializations
         int lower = 1;
         int upper = 100;
 
         CsvUtils csvUtils = new CsvUtils();
+        //Note that this program creates CSV files that use ":" as the separator. Keep this in mind when importing the data into excel or any other CSV manipulation software
+
+        //Change filename to correspond to the predicate type, or it will overwrite the previous file.
         FileWriter csvWriterNoPredicate = new FileWriter(new File("src/csvOut/primes.csv"));
         CollatzProxy collatzProxy = new CollatzProxy(lower, upper);
 
+        //CSV column headers
         csvUtils.writeLine(csvWriterNoPredicate, Arrays.asList("Initial Numbers : Collatz Number: Calculations "));
+
 
         List<String> initialNumbers = new ArrayList<>();
         List<String> collatzNumbers = new ArrayList<>();
         List<String> calculationSteps = new ArrayList<>();
         List<String> values = new ArrayList<>();
 
+        //change predicateType and predicateNumber here to create a new filtered list.
         for (Integer i : collatzProxy.getCollatzNumbers(lower, upper, "Prime").getInitialInts()) {
             initialNumbers.add(i.toString());
         }
@@ -34,10 +40,12 @@ public class CollatzProject {
             collatzNumbers.add(i.toString());
         }
 
+        //change predicateType and predicateNumber here to create a new filtered list.
         for (CollatzCalculation c : collatzProxy.getCalculations(lower, upper, "Prime")) {
             calculationSteps.add(c.calculationSteps().toString());
         }
 
+        //format and write values to .csv
         for (int z = 0; z < calculationSteps.size(); z++) {
             values.add(initialNumbers.get(z));
             values.add(collatzNumbers.get(z));

@@ -19,14 +19,13 @@ public class CollatzProject {
         int upper = 100;
 
         CSVWriter CSVWriter = new CSVWriter();
-        //Note that this program creates CSV files that use ":" as the separator. Keep this in mind when importing the data into excel or any other CSV manipulation software
 
         //Change filename to correspond to the predicate type, or it will overwrite the previous file.
-        FileWriter csvWriterNoPredicate = new FileWriter(new File("src/csvOut/primes.csv"));
+        FileWriter csvWriterNoPredicate = new FileWriter(new File("src/csvOut/multiplesOf5.csv"));
         CollatzProxy collatzProxy = new CollatzProxy(lower, upper);
 
         //CSV column headers
-        CSVWriter.writeLine(csvWriterNoPredicate, Arrays.asList("Initial Numbers : Collatz Number: Calculations "));
+        CSVWriter.writeLine(csvWriterNoPredicate, Arrays.asList("Initial Numbers", "Collatz Number",  "Result of each calculation"));
 
 
         List<String> initialNumbers = new ArrayList<>();
@@ -35,17 +34,17 @@ public class CollatzProject {
         List<String> values = new ArrayList<>();
 
         //change predicateType and predicateNumber here to create a new filtered list.
-        for (Integer i : collatzProxy.getCollatzNumbers(lower, upper, "Prime").getInitialInts()) {
-            initialNumbers.add(i.toString());
+        for (Integer i : collatzProxy.getCollatzNumbers(lower, upper, "Multiple", 5).getInitialInts()) {
+            initialNumbers.add(i.toString().replaceAll(", $", ""));
         }
 
         for (Integer i : collatzProxy.getCollatzNumbers(lower, upper).getCollatzNums()) {
-            collatzNumbers.add(i.toString());
+            collatzNumbers.add(i.toString().replaceAll(", $", ""));
         }
 
         //change predicateType and predicateNumber here to create a new filtered list.
-        for (CollatzCalculation c : collatzProxy.getCalculations(lower, upper, "Prime")) {
-            calculationSteps.add(c.calculationSteps().toString());
+        for (CollatzCalculation c : collatzProxy.getCalculations(lower, upper,"Multiple",5)) {
+            calculationSteps.add(c.calculationSteps().toString().replaceAll("[\\] , \\[] *", " "));
         }
 
         //format and write values to .csv
@@ -53,11 +52,11 @@ public class CollatzProject {
             values.add(initialNumbers.get(z));
             values.add(collatzNumbers.get(z));
             values.add(calculationSteps.get(z));
-            CSVWriter.writeLine(csvWriterNoPredicate, values, ':', '\u0000');
+            CSVWriter.writeLine(csvWriterNoPredicate, values);
             values.remove(initialNumbers.get(z));
             values.remove(collatzNumbers.get(z));
             values.remove(calculationSteps.get(z));
-            values.remove(":");
+            values.remove(",");
         }
         csvWriterNoPredicate.flush();
         csvWriterNoPredicate.close();

@@ -22,14 +22,14 @@ class CollatzNumbers {
     }
     /**
      * 
-     * @return collatzNums
+     * @return collatzNums a list of numbers that are the total iterations needed to get to 1 from each number in {@link #initialInts}
      */
     List<Integer> getCollatzNums(){
         return collatzNums;
     }
     /**
      * 
-     * @return initialInt
+     * @return initialInts the list of initial integers on which to perform the calculations
      */
     List<Integer> getInitialInts(){
         return initialInts;

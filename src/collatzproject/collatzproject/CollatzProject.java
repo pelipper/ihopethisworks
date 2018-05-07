@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @author Stuart Pellitier, Eli Poulos, Clay Wightman
+ */
 public class CollatzProject {
 
     public static void main(String[] args) throws IOException {
@@ -15,7 +18,7 @@ public class CollatzProject {
         int lower = 1;
         int upper = 100;
 
-        CsvUtils csvUtils = new CsvUtils();
+        CSVWriter CSVWriter = new CSVWriter();
         //Note that this program creates CSV files that use ":" as the separator. Keep this in mind when importing the data into excel or any other CSV manipulation software
 
         //Change filename to correspond to the predicate type, or it will overwrite the previous file.
@@ -23,7 +26,7 @@ public class CollatzProject {
         CollatzProxy collatzProxy = new CollatzProxy(lower, upper);
 
         //CSV column headers
-        csvUtils.writeLine(csvWriterNoPredicate, Arrays.asList("Initial Numbers : Collatz Number: Calculations "));
+        CSVWriter.writeLine(csvWriterNoPredicate, Arrays.asList("Initial Numbers : Collatz Number: Calculations "));
 
 
         List<String> initialNumbers = new ArrayList<>();
@@ -50,7 +53,7 @@ public class CollatzProject {
             values.add(initialNumbers.get(z));
             values.add(collatzNumbers.get(z));
             values.add(calculationSteps.get(z));
-            csvUtils.writeLine(csvWriterNoPredicate, values, ':', '\u0000');
+            CSVWriter.writeLine(csvWriterNoPredicate, values, ':', '\u0000');
             values.remove(initialNumbers.get(z));
             values.remove(collatzNumbers.get(z));
             values.remove(calculationSteps.get(z));

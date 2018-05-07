@@ -45,21 +45,21 @@ public class CollatzCalculation {
 
     /**
      *
-     * @return initialInt
+     * @return initialInt the initial integer to perform collatz calculations on
      */
     int getInitialInt(){
         return initialInt;
     }
     /**
      *
-     * @return calculationSteps
+     * @return calculationSteps a list of numbers where each number is the result of performing a collatz calculation on the last
      */
     public List<Integer> calculationSteps(){
         return calculationSteps;
     }
     /**
      *
-     * @return numIterations
+     * @return numIterations the totoal number of iterations it took to get to 1 from the initial int
      */
     int getNumIterations(){
         return numIterations;

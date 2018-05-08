@@ -6,17 +6,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-class CollatzProxyTest {
+public class CollatzProxyTest {
 
 
     @Test
-    void getCalculations() {
+   public void getCalculations() {
         CollatzProxy collatzProxy = new CollatzProxy(1, 10);
         System.out.println(collatzProxy.getCalculations(1, 10));
     }
 
     @Test
-    void getCollatzNumbersNonPrimeMult() {
+    public void getCollatzNumbersNonPrimeMult() {
         ArrayList<Integer> testCollatz = new ArrayList<>(Arrays.asList(1, 2, 8, 3, 6));
         CollatzProxy collatzProxy = new CollatzProxy(1, 10);
 
@@ -24,7 +24,7 @@ class CollatzProxyTest {
     }
 
     @Test
-    void getCollatzNumbersNonPrimePower() {
+    public void getCollatzNumbersNonPrimePower() {
         ArrayList<Integer> testCollatz = new ArrayList<>(Arrays.asList(0, 1, 2, 3));
         CollatzProxy collatzProxy = new CollatzProxy(1, 10);
 
@@ -34,7 +34,7 @@ class CollatzProxyTest {
     }
 
     @Test
-    void getCollatzNumbersPrime() {
+    public void getCollatzNumbersPrime() {
         ArrayList<Integer> testCollatz = new ArrayList<>(Arrays.asList(0, 1, 5, 16));
         CollatzProxy collatzProxy = new CollatzProxy(1, 10);
 

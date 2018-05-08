@@ -9,36 +9,36 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-class RealCollatzTest {
+public class RealCollatzTest {
 
     @Test
-    void getLowerBound() {
-        RealCollatz rc = new RealCollatz(0, 1);
-        assertEquals(0, rc.getLowerBound());
+    public void getLowerBound() {
+        RealCollatz rc = new RealCollatz(1, 2);
+        assertEquals(1, rc.getLowerBound());
     }
 
     @Test
-    void setLowerBound() {
-        RealCollatz rc = new RealCollatz(0, 1);
+    public void setLowerBound() {
+        RealCollatz rc = new RealCollatz(1, 2);
         rc.setLowerBound(1);
         assertEquals(rc.getLowerBound(), 1);
     }
 
     @Test
-    void getUpperBound() {
-        RealCollatz rc = new RealCollatz(0, 1);
-        assertEquals(1, rc.getUpperBound());
+    public void getUpperBound() {
+        RealCollatz rc = new RealCollatz(1, 2);
+        assertEquals(2, rc.getUpperBound());
     }
 
     @Test
-    void setUpperBound() {
-        RealCollatz rc = new RealCollatz(0, 1);
+    public void setUpperBound() {
+        RealCollatz rc = new RealCollatz(1, 2);
         rc.setUpperBound(2);
-        assertEquals(rc.getLowerBound(), 2);
+        assertEquals(rc.getUpperBound(), 2);
     }
 
     @Test
-    void getCollatzNumbers() {
+    public void getCollatzNumbers() {
         int lower = 1;
         int upper = 10;
         List<Integer> initialInts = new ArrayList<>(upper);
@@ -55,7 +55,7 @@ class RealCollatzTest {
     }
 
     @Test
-    void getCalculations() {
+    public void getCalculations() {
         int lower = 1;
         int upper = 10;
         RealCollatz realCollatz = new RealCollatz(lower, upper);
@@ -65,7 +65,7 @@ class RealCollatzTest {
     }
 
     @Test
-    void collatzListInitialization() { int lower = 1;
+    public void collatzListInitialization() { int lower = 1;
         int upper = 10;
         RealCollatz realCollatz = new RealCollatz(lower, upper);
         realCollatz.collatzListInitialization();

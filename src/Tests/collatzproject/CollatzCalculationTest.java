@@ -8,23 +8,23 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-class CollatzCalculationTest {
+public class CollatzCalculationTest {
 
     @Test
-    void getInitialInt() {
+    public void getInitialInt() {
         CollatzCalculation collatzCalculation = new CollatzCalculation(1);
         assertEquals(collatzCalculation.getInitialInt(), 1);
     }
 
     @Test
-    void calculationSteps() {
+    public void calculationSteps() {
         ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(10, 5, 16, 8, 4, 2));
         CollatzCalculation collatzCalculation = new CollatzCalculation(10);
         assertEquals(collatzCalculation.calculationSteps(), numbers);
     }
 
     @Test
-    void getNumIterations() {
+    public void getNumIterations() {
         CollatzCalculation collatzCalculation = new CollatzCalculation(10);
         assertEquals(6, collatzCalculation.getNumIterations());
     }

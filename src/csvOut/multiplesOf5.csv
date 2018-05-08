@@ -1,4 +1,4 @@
-Initial Numbers,Collatz Number,Calculations 
+Initial Numbers,Collatz Number,Result of each calculation
 4,0, 5 16 8 4 2 
 9,1, 10 5 16 8 4 2 
 14,7, 15 46 23 70 35 106 53 160 80 40 20 10 5 16 8 4 2 

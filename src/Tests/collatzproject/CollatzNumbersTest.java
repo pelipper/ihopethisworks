@@ -3,9 +3,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 class CollatzNumbersTest {
 
@@ -16,7 +15,6 @@ class CollatzNumbersTest {
 
         CollatzNumbers collatzNumbers = new CollatzNumbers(initialInts, testCollatz);
         assertTrue(collatzNumbers.collatzNums.equals(collatzNumbers.getCollatzNums()));
-
     }
 
     @Test

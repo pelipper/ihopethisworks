@@ -143,7 +143,7 @@ public class CollatzProxy implements Collatz {
             for(int i = 0; i < unfilteredList.getCollatzNums().size(); i++){
                 if(unfilteredList.getInitialInts().get(i)%predicateNumber == 0){
                     filteredList.add(unfilteredList.getCollatzNums().get(i));
-                    initialIntList.add(i);
+                    initialIntList.add(i+lowerBound);
                 }
             }
         }
@@ -151,7 +151,7 @@ public class CollatzProxy implements Collatz {
             for(int i = 0; i < unfilteredList.getCollatzNums().size(); i++){
                 if(isPowerOf(unfilteredList.getInitialInts().get(i), predicateNumber)){
                     filteredList.add(unfilteredList.getCollatzNums().get(i));
-                    initialIntList.add(i);
+                    initialIntList.add(i+lowerBound);
                 }
             }
         }
@@ -182,7 +182,7 @@ public class CollatzProxy implements Collatz {
         for(int i = 0; i < unfilteredList.getCollatzNums().size(); i++){
             if(isPrime(unfilteredList.getInitialInts().get(i))){
                 filteredList.add(unfilteredList.getCollatzNums().get(i));
-                initialIntList.add(i);
+                initialIntList.add(i+lowerBound);
             }
         }
         

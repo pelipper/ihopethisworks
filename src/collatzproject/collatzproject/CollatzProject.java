@@ -21,7 +21,7 @@ public class CollatzProject {
         CSVWriter CSVWriter = new CSVWriter();
 
         //Change filename to correspond to the predicate type, or it will overwrite the previous file.
-        FileWriter csvWriterNoPredicate = new FileWriter(new File("src/csvOut/multiplesOf5.csv"));
+        FileWriter csvWriterNoPredicate = new FileWriter(new File("src/csvOut/test.csv"));
         CollatzProxy collatzProxy = new CollatzProxy(lower, upper);
 
         //CSV column headers
@@ -32,7 +32,6 @@ public class CollatzProject {
         List<String> collatzNumbers = new ArrayList<>();
         List<String> calculationSteps = new ArrayList<>();
         List<String> values = new ArrayList<>();
-
         //change predicateType and predicateNumber here to create a new filtered list.
         for (Integer i : collatzProxy.getCollatzNumbers(lower, upper, "Multiple", 5).getInitialInts()) {
             initialNumbers.add(i.toString().replaceAll(", $", ""));

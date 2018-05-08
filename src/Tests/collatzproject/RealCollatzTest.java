@@ -15,13 +15,17 @@ public class RealCollatzTest {
     public void getLowerBound() {
         RealCollatz rc = new RealCollatz(1, 2);
         assertEquals(1, rc.getLowerBound());
+
     }
 
     @Test
-    public void setLowerBound() {
+    public void setLowerBound() throws IllegalArgumentException{
         RealCollatz rc = new RealCollatz(1, 2);
         rc.setLowerBound(1);
         assertEquals(rc.getLowerBound(), 1);
+        if (rc.getLowerBound() < 1){
+            throw new IllegalArgumentException("lowerBound Number must be greater than 0");
+        }
     }
 
     @Test
@@ -31,14 +35,18 @@ public class RealCollatzTest {
     }
 
     @Test
-    public void setUpperBound() {
+    public void setUpperBound()throws IllegalArgumentException {
         RealCollatz rc = new RealCollatz(1, 2);
         rc.setUpperBound(2);
         assertEquals(rc.getUpperBound(), 2);
+        if (rc.getLowerBound() < 1){
+            throw new IllegalArgumentException("upperBound Number must be greater than 0");
+        }
+
     }
 
     @Test
-    public void getCollatzNumbers() {
+    public void getCollatzNumbers() throws IllegalArgumentException{
         int lower = 1;
         int upper = 10;
         List<Integer> initialInts = new ArrayList<>(upper);
@@ -51,7 +59,11 @@ public class RealCollatzTest {
         }
         assertEquals(initialInts, realCollatz.getCollatzNumbers(lower, upper).getInitialInts());
         assertEquals(numbers, testCollatz);
-
+        if (!(initialInts.get(0).equals(realCollatz.getLowerBound()))){
+            throw new IllegalArgumentException("lowerBound must not be less than current lowerBound");
+        }else  if (!(initialInts.get(initialInts.size()-1).equals(realCollatz.getUpperBound()))){
+            throw new IllegalArgumentException("upperBound must not be less than current upperBound");
+        }
     }
 
     @Test
@@ -64,6 +76,22 @@ public class RealCollatzTest {
 
     }
 
+    @Test
+    public void getCalculationsTestLowerBound() throws IllegalArgumentException{
+        RealCollatz realCollatz = new RealCollatz(1,10);
+        if (!(realCollatz.getCalculations(1,2).get(0).equals(1))){
+            throw new IllegalArgumentException("lowerBound must not be less than current lowerBound");
+        }
+    }
+
+
+    @Test
+    public void getCalculationsTestUpperBound() throws IllegalArgumentException{
+        RealCollatz realCollatz = new RealCollatz(1,2);
+        if (!(realCollatz.getCalculations(1,2).get(2).equals(2))){
+            throw new IllegalArgumentException("upperBound must not be less than current upperBound");
+        }
+    }
     @Test
     public void collatzListInitialization() { int lower = 1;
         int upper = 10;
